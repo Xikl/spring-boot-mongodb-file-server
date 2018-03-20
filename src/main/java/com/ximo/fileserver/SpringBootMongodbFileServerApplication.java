@@ -1,4 +1,4 @@
-package com.ximo.springbootmongodbfileserver;
+package com.ximo.fileserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
