@@ -1,0 +1,15 @@
+server:
+  address: localhost
+  port: 8081
+
+spring:
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: HTML5
+  # 文件上传限制大小
+  http:
+    multipart:
+      max-file-size: 1024KB
+      max-request-size: 1024KB
+
