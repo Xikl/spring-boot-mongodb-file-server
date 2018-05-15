@@ -1,10 +1,14 @@
 package com.ximo.fileserver.service.impl;
 
 import com.ximo.fileserver.domain.File;
+import com.ximo.fileserver.enums.ResultEnums;
+import com.ximo.fileserver.exception.FileServerException;
 import com.ximo.fileserver.repository.FileRepository;
 import com.ximo.fileserver.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +43,7 @@ public class FileServiceImpl implements FileService{
      */
     @Override
     public void removeFile(String id) {
-        fileRepository.delete(id);
+        fileRepository.deleteById(id);
     }
 
     /**
@@ -50,7 +54,7 @@ public class FileServiceImpl implements FileService{
      */
     @Override
     public File findOne(String id) {
-        return fileRepository.findOne(id);
+        return fileRepository.findById(id).orElseThrow(() -> new FileServerException(ResultEnums.RESOURCE_NOT_FOUND));
     }
 
     /**
@@ -61,8 +65,8 @@ public class FileServiceImpl implements FileService{
      * @return 所有的文件
      */
     @Override
-    public List<File> findAllByPage(int pageIndex, int pageSize) {
-        return fileRepository.findAll(new PageRequest(pageIndex, pageSize,
-                new Sort(Sort.Direction.DESC, "uploadTime"))).getContent();
+    public Page<File> findAllByPage(int pageIndex, int pageSize) {
+        return fileRepository.findAll(PageRequest.of(pageIndex, pageSize,
+                new Sort(Sort.Direction.DESC, "uploadTime")));
     }
 }

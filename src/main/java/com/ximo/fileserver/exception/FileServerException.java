@@ -1,6 +1,6 @@
 package com.ximo.fileserver.exception;
 
-import com.ximo.fileserver.enums.ResultEnum;
+import com.ximo.fileserver.enums.ResultEnums;
 
 /**
  * @author 朱文赵
@@ -13,7 +13,7 @@ public class FileServerException extends RuntimeException{
         super(message, cause);
     }
 
-    public FileServerException(ResultEnum resultEnum) {
-        super(resultEnum.getMsg());
+    public FileServerException(ResultEnums resultEnums) {
+        super(resultEnums.getMsg());
     }
 }

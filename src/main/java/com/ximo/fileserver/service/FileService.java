@@ -1,6 +1,7 @@
 package com.ximo.fileserver.service;
 
 import com.ximo.fileserver.domain.File;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -41,5 +42,5 @@ public interface FileService {
      * @param pageSize  总数
      * @return 所有的文件
      */
-    List<File> findAllByPage(int pageIndex, int pageSize);
+    Page<File> findAllByPage(int pageIndex, int pageSize);
 }

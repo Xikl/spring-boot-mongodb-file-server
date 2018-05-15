@@ -1,6 +1,6 @@
 package com.ximo.fileserver.util;
 
-import com.ximo.fileserver.enums.ResultEnum;
+import com.ximo.fileserver.enums.ResultEnums;
 import com.ximo.fileserver.exception.FileServerException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.DigestUtils;
@@ -44,8 +44,8 @@ public class MD5Util {
             }
             return md5.toString();
         } catch (NoSuchAlgorithmException | IOException e) {
-            log.error("【输入流 => md5】{}", ResultEnum.MD5_ERROR, e);
-            throw new FileServerException(ResultEnum.INNER_ERROR);
+            log.error("【输入流 => md5】{}", ResultEnums.MD5_ERROR, e);
+            throw new FileServerException(ResultEnums.INNER_ERROR);
         }
     }
 
@@ -59,8 +59,8 @@ public class MD5Util {
         try {
             return DigestUtils.md5DigestAsHex(inputStream);
         } catch (IOException e) {
-            log.error("【输入流 => md5】{}", ResultEnum.MD5_ERROR, e);
-            throw new FileServerException(ResultEnum.INNER_ERROR);
+            log.error("【输入流 => md5】{}", ResultEnums.MD5_ERROR, e);
+            throw new FileServerException(ResultEnums.INNER_ERROR);
         }
     }
 
